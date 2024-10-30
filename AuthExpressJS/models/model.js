@@ -1,20 +1,15 @@
 import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
-    username: {
+  utilisateur: {  
       type: String,
       required: true,
-      unique: true
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true
-    },
-    password: {
+      unique: true,
+      trim: true  // Pour enlever les espaces inutiles
+  },
+  motdepasse: {
       type: String,
       required: true
-    },
-  });
-
-  export const User = mongoose.model('UserSession', userSchema);
+  }
+});
+  export const Utilisateur = mongoose.model('UsersTest', userSchema);
