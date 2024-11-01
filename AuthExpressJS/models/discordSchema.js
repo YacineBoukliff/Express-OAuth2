@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const DiscordSchema = new mongoose.Schema({
-  username: {  
+  utilisateur: {  
       type: String,
       required: true,
       unique: true,
@@ -11,6 +11,11 @@ const DiscordSchema = new mongoose.Schema({
       type: String,
       required: true,
       unique : true
-  }
+  },
+  email: {
+    type: String,
+    required: true,
+    unique : true
+}
 });
   export const DiscordUser = mongoose.model('DiscordUser', DiscordSchema);
