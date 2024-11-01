@@ -73,5 +73,9 @@ router.post('/passeport/logout', checkAuth, (req, res) => {
         });
     });
 });
+
+router.get('/', (req,res) => {
+    res.json('Coucou')
+})
 export default router
 

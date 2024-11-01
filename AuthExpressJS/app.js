@@ -47,6 +47,10 @@ app.use(passport.session());
 
 app.use("/api/auth", authRoutes);
 
+app.get('/', (req,res) => {
+    res.json('Coucou')
+})
+
 app.listen(3000, () => {
     console.log('Serveur démarré sur le port 3000');
 });
