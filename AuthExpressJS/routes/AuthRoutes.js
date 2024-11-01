@@ -2,6 +2,7 @@ import { Router } from "express";
 import { Utilisateur } from "../models/model.js";
 import bcrypt from "bcrypt"
 import passport from "../strategies/local-strategy.js";
+import "../strategies/discord-strategy.js"
 
 
 const router = Router()
@@ -77,5 +78,11 @@ router.post('/passeport/logout', checkAuth, (req, res) => {
 router.get('/', (req,res) => {
     res.json('Coucou')
 })
+
+router.get ('/discord', passport.authenticate('discord'))
+router.get ('/discord/redirect', passport.authenticate('discord'), (req,res) => {
+    res.json("Super")
+})
+
 export default router
 
