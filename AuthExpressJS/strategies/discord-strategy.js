@@ -5,6 +5,18 @@ import { DiscordUser } from "../models/discordSchema.js";
 
 dotenv.config();
 
+passport.serializeUser((user,done) => {
+    done(null,user.id)
+})
+passport.deserializeUser(async (id, done) => {
+    try {
+        const utilisateur = await DiscordUser.findById(id);
+        done(null, utilisateur);
+    } catch (err) {
+        done(err);
+    }
+});
+
 export default passport.use(
     new Strategy({
         clientID: process.env.DISCORD_SECRET_ID,

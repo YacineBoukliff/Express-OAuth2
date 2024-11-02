@@ -80,9 +80,22 @@ router.get('/', (req,res) => {
 })
 
 router.get ('/discord', passport.authenticate('discord'))
-router.get ('/discord/redirect', passport.authenticate('discord'), (req,res) => {
+
+router.get ('/succes', (req,res) => {
     res.json("Super")
 })
+
+router.get ('/echec', (req,res) => {
+    res.json("echec")
+})
+
+router.get('/discord/redirect', 
+    passport.authenticate('discord', {
+        successRedirect: '/api/auth/succes',  
+        failureRedirect: '/api/auth/echec'
+    })
+);
+
 
 export default router
 
